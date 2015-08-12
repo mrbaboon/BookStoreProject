@@ -1,0 +1,9 @@
+{% if latest_book_list %}
+    <ul>
+    {% for book in latest_book_list %}
+        <li><a href="{% url 'BookStoreApp:detail' book.id %}">{{ book.book_title }}</a></li>
+    {% endfor %}
+    </ul>
+{% else %}
+    <p>No Books are available.</p>
+{% endif %}
