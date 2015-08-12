@@ -11,6 +11,6 @@ urlpatterns = [
     url(r'^(?P<book_id>[0-9]+)/$', views.detail, name='detail'),
     # /BookStoreApp/1/results/$
     url(r'^(?P<book_id>[0-9]+)/results/$', views.results, name='results'),
-    # BookStoreApp/3/vote/$
-    url(r'^(?P<book_id>[0-9]+)/vote/$', views.vote, name='vote'),
+    # BookStoreApp/3/rate/$
+    url(r'^(?P<book_id>[0-9]+)/rate/$', views.rate, name='rate'),
 ]

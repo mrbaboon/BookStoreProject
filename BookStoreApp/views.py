@@ -15,5 +15,5 @@ def results(request, book_id):
     response =  "You're looking at the reviews of %s."
     return HttpResponse(response % book_id)
 
-def vote(request, book_id):
-    return HttpResponse("You're voting on book %s" % book_id)
+def rate(request, book_id):
+    return HttpResponse("You're rating book %s" % book_id)

@@ -1,6 +1,14 @@
 <h1>{{ book.book_title}}</h1>
+
+{% if error_message %} <p><strong>{{ error_message }}</strong></p>{% endif %}
+
 <ul>
     {% for review in book.bookreview_set.all %}
         <li>{{ review.review_text }}</li>
     {% endfor %}
 </ul>
+
+<form action="{% url 'BookStoreApp:rate' book.id %}" method="post">
+    {% csrf_token %}
+    {% for i in range
+</form>

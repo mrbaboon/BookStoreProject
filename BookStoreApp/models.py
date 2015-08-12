@@ -20,7 +20,15 @@ class Book(models.Model):
 class BookReview(models.Model):
     book = models.ForeignKey(Book)
     review_text = models.CharField(max_length=800)
-    rating = models.IntegerField(default = 5)
+    rating_choices=(
+        (1, "1 star"),
+        (2, "2 stars"),
+        (3, "3 stars"),
+        (4, "4 stars"),
+        (5, "5 stars"),
+    )
+    rating = models.IntegerField(choices=rating_choices, default=5)
+
 
     def __str__(self):
         return self.review_text
