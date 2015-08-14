@@ -1,0 +1,7 @@
+<h1>{{ author }}</h1>
+
+<ul>
+    {% for book in author.book_set.all %}
+    <li>{{book}}</li>
+    {%endfor%}
+</ul>
