@@ -1,0 +1,9 @@
+<h1>{{book.book_title}}</h1>
+
+{% if error_message %} <p><strong>{{ error_message }}</strong></p>{% endif %}
+<p>Hello</p>
+<ul>
+{% for review in book.bookreview_set.all %}
+<li>{{ review.review_text }}</li>
+{% endfor %}
+</ul>

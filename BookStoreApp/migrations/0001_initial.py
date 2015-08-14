@@ -11,24 +11,27 @@ class Migration(migrations.Migration):
 
     operations = [
         migrations.CreateModel(
-            name='Choice',
+            name='Author',
             fields=[
-                ('id', models.AutoField(primary_key=True, verbose_name='ID', auto_created=True, serialize=False)),
-                ('choice_text', models.CharField(max_length=200)),
-                ('votes', models.IntegerField(default=0)),
+                ('id', models.AutoField(verbose_name='ID', serialize=False, auto_created=True, primary_key=True)),
+                ('first_name', models.CharField(max_length=50)),
+                ('last_name', models.CharField(max_length=50)),
             ],
         ),
         migrations.CreateModel(
-            name='Question',
+            name='Book',
             fields=[
-                ('id', models.AutoField(primary_key=True, verbose_name='ID', auto_created=True, serialize=False)),
-                ('question_text', models.CharField(max_length=200)),
-                ('pub_date', models.DateTimeField(verbose_name='date published')),
+                ('id', models.AutoField(verbose_name='ID', serialize=False, auto_created=True, primary_key=True)),
+                ('book_title', models.CharField(max_length=100)),
+                ('author', models.ForeignKey(to='BookStoreApp.Author')),
             ],
         ),
-        migrations.AddField(
-            model_name='choice',
-            name='question',
-            field=models.ForeignKey(to='BookStoreApp.Question'),
+        migrations.CreateModel(
+            name='BookReview',
+            fields=[
+                ('id', models.AutoField(verbose_name='ID', serialize=False, auto_created=True, primary_key=True)),
+                ('review_text', models.CharField(max_length=200)),
+                ('book', models.ForeignKey(to='BookStoreApp.Book')),
+            ],
         ),
     ]

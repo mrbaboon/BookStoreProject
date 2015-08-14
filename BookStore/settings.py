@@ -20,7 +20,7 @@ BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 # See https://docs.djangoproject.com/en/1.8/howto/deployment/checklist/
 
 # SECURITY WARNING: keep the secret key used in production secret!
-SECRET_KEY = '%5@+v_t@#327akf2c$s_eejku&8twkjg^ehn7clu1$a)6)kx(a'
+SECRET_KEY = '!rr)9#spt_q3as+a-n@)s$r3et&lp)pjh^crje6wh08!8+g_(n'
 
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
@@ -37,8 +37,7 @@ INSTALLED_APPS = (
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
-    'rest_framework',
-    'BookStoreApp',
+    'BookStoreApp'
 )
 
 MIDDLEWARE_CLASSES = (
@@ -102,9 +101,3 @@ USE_TZ = True
 # https://docs.djangoproject.com/en/1.8/howto/static-files/
 
 STATIC_URL = '/static/'
-
-REST_FRAMEWORK = {
-    'DEFAULT_PERMISSION_CLASSES':[
-        'rest_framework.permissions.DjangoModelPermissionsOrAnonReadOnly'
-    ]
-}

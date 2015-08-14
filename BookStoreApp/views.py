@@ -1,19 +1,21 @@
-from django.shortcuts import render, get_object_or_404
+from django.shortcuts import render
 from django.http import HttpResponse
+from django.template import RequestContext, loader
+from django.shortcuts import get_object_or_404, render
+
 from .models import Book
 
 def index(request):
-    latest_book_list = Book.objects.order_by('-add_date')[:5]
-    context = {'latest_book_list': latest_book_list}
+    book_list = Book.objects.order_by('-book_title')[:5]
+    context = {'book_list': book_list}
     return render(request, 'BookStoreApp/index.html', context)
 
-def detail(request, book_id):
+def book_detail(request, book_id):
     book = get_object_or_404(Book, pk=book_id)
-    return render(request, 'BookStoreApp/detail.html', {'book': book})
+    print("book id is " + book_id)
+    print("book is " + book.book_title)
+    context = {'book': book}
+    return render(request, 'BookStoreApp/book_detail.html', context)
 
-def results(request, book_id):
-    response =  "You're looking at the reviews of %s."
-    return HttpResponse(response % book_id)
-
-def rate(request, book_id):
-    return HttpResponse("You're rating book %s" % book_id)
+def author_detail(request, author_id):
+    return HttpResponse("You're looking at %s." % author_id)
