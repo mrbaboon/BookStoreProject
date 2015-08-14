@@ -1,5 +1,5 @@
 from django.shortcuts import render
-from django.http import HttpResponse
+from django.http import HttpResponse, HttpResponseRedirect
 from django.template import RequestContext, loader
 from django.shortcuts import get_object_or_404, render
 
@@ -22,6 +22,6 @@ def author_detail(request, author_id):
 
 def book_review(request, book_id):
     book = get_object_or_404(Book, pk=book_id)
-    context = {'book': book}
-    return render(request, 'BookStoreApp/book_review.html', context)
-
+    new_review_text = request.POST['review']
+    new_review = book.bookreview_set.create(review_text=request.POST['review'])
+    return render(request, 'BookStoreApp/book_detail.html', context={'book':book})

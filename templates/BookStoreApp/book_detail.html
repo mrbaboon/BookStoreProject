@@ -10,6 +10,6 @@
 
 <form action="{% url 'BookStoreApp:bookreview' book.id %}" method="post">
     {% csrf_token %}
-    <input type="text" name="review" />
+    <input type="text" name="review" id="review"/>
     <input type="submit"/>
 </form>
