@@ -8,8 +8,16 @@
 {% endfor %}
 </ul>
 
+<h2>Write A Review</h2>
 <form action="{% url 'BookStoreApp:bookreview' book.id %}" method="post">
     {% csrf_token %}
+    <select name="rating" id="rating">
+        <option value=1>1 Star</option>
+        <option value=2>2 Stars</option>
+        <option value=3>3 Stars</option>
+        <option value=4>4 Stars</option>
+        <option value=5>5 Stars</option>
+    </select>
     <input type="text" name="review" id="review"/>
     <input type="submit"/>
 </form>

@@ -16,6 +16,7 @@ class Book(models.Model):
 
 class BookReview(models.Model):
     book = models.ForeignKey(Book)
+    stars = models.IntegerField()
     review_text = models.CharField(max_length=200)
 
     def __str__(self):
