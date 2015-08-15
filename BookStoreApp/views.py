@@ -22,6 +22,18 @@ def author_detail(request, author_id):
 
 def book_review(request, book_id):
     book = get_object_or_404(Book, pk=book_id)
-    new_review_text = request.POST['review']
-    new_review = book.bookreview_set.create(review_text=request.POST['review'])
-    return render(request, 'BookStoreApp/book_detail.html', context={'book':book})
+    new_review = book.bookreview_set.create(review_text=request.POST['review'], stars=request.POST['stars'])
+    stars = avg_book_stars(book_id)
+    context = {'book':book, 'stars':stars}
+    return render(request, 'BookStoreApp/book_detail.html', context)
+
+def avg_book_stars(book_id):
+    book = get_object_or_404(Book, pk=book_id)
+    count = 0
+    stars = 0
+    for review in book.bookreview_set.all():
+        stars = review.stars + stars
+        count += 1
+    stars = (2*stars) // count
+    stars = stars/2 # This makes stars round to the nearest half integer
+    return stars

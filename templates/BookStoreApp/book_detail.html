@@ -1,7 +1,7 @@
 <h1>{{book.book_title}}</h1>
 
 {% if error_message %} <p><strong>{{ error_message }}</strong></p>{% endif %}
-<p>Hello</p>
+<h4>This book is rated {{stars}}/5</h4>
 <ul>
 {% for review in book.bookreview_set.all %}
 <li>{{ review.review_text }}</li>
@@ -11,7 +11,7 @@
 <h2>Write A Review</h2>
 <form action="{% url 'BookStoreApp:bookreview' book.id %}" method="post">
     {% csrf_token %}
-    <select name="rating" id="rating">
+    <select name="stars" id="stars">
         <option value=1>1 Star</option>
         <option value=2>2 Stars</option>
         <option value=3>3 Stars</option>
